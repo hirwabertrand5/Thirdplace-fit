@@ -58,6 +58,7 @@ session_start();
 
     </header>
     <!-- end header section -->
+    
     <!-- slider section -->
     <section class="slider_section position-relative">
       <div class="container">
@@ -105,6 +106,8 @@ session_start();
   <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+
             <h2 class="text-center">Provide Feedback</h2>
             <form action="submit_feedback.php" method="POST">
                 <div class="form-group">

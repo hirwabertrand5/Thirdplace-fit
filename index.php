@@ -1,3 +1,8 @@
+<?php
+require_once "config.php";
+require_once "common_function.php";
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -96,13 +101,21 @@
                   <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact Us</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                  </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                </form>
+                  <?php
+								if(!isset($_SESSION['user_id']))
+								{
+									echo "<li class='nav-item'> <a class='nav-link' href='login.php'>Login</a></li>";
+								}
+
+									else
+									{
+                    echo "<li class='nav-item'> <a class='nav-link' href='logout.php'>Logout</a></li>";
+                  }
+								
+								?>
+					
+              </ul>
+               
               </div>
             </div>
           </nav>
@@ -162,7 +175,7 @@
                         <a href="about.php" class="btn-1">
                           Read More
                         </a>
-                        <a href="service.html" class="btn-2">
+                        <a href="service.php" class="btn-2">
                           Services
                         </a>
                       </div>
@@ -190,7 +203,7 @@
                         <a href="about.php" class="btn-1">
                           Read More
                         </a>
-                        <a href="service.html" class="btn-2">
+                        <a href="service.php" class="btn-2">
                           service
                         </a>
                       </div>
@@ -206,78 +219,20 @@
     <!-- end slider section -->
   </div>
 
-  <!-- client section -->
 
-  <section class="client_section layout_padding">
+  <section class="service_section layout_padding">
     <div class="container">
       <div class="heading_container">
         <h2>
-          What Says Our Customers
+          Our Services
         </h2>
       </div>
-      <div id="carouselExample2Indicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExample2Indicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExample2Indicators" data-slide-to="1"></li>
-          <li data-target="#carouselExample2Indicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Consectetur
-                </h5>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Consectetur
-                </h5>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Consectetur
-                </h5>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <div class="service_container">
+    <?php getServices(); ?>    
+    </div>
     </div>
   </section>
-
-  <!-- end client section -->
-
+  
  
 
   <!-- contact section -->
@@ -309,7 +264,7 @@
                     <input type="text" name="message" placeholder="Message" />
                   </div>
                   <div class="mt-5">
-                    <button type="submit" naeme="submit">
+                    <button type="submit" name="submit">
                       Send
                     </button>
                   </div>

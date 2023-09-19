@@ -16,8 +16,10 @@ if (isset($_POST["submit"])) {
         mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $phone_number, $message);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
-        
-        echo "Data inserted successfully.";
+
+        echo "<script>alert('Your Query has been Submitted.','_self')</script>";
+        echo "<script>window.open('index.php','_self')</script>";
+      
     } else {
         echo "Error: " . mysqli_error($conn);
     }

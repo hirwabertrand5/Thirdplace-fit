@@ -1,3 +1,7 @@
+<?php
+require_once "config.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -101,10 +105,10 @@
                   <li class="nav-item ">
                     <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item active" >
                     <a class="nav-link" href="about.php">About </a>
                   </li>
-                  <li class="nav-item active">
+                  <li class="nav-item ">
                     <a class="nav-link" href="service.php">Services </a>
                   </li>
                   <li class="nav-item ">
@@ -112,14 +116,21 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact Us</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                  </li>
+                  </li> <?php
+								if(!isset($_SESSION['user_id']))
+								{
+									echo "<li class='nav-item'> <a class='nav-link' href='login.php'>Login</a></li>";
+								}
+
+									else
+									{
+                    echo "<li class='nav-item'> <a class='nav-link' href='logout.php'>Logout</a></li>";
+                  }
+								
+								?>
+					
                 </ul>
-                <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                </form>
+               
               </div>
             </div>
           </nav>

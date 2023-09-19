@@ -1,10 +1,7 @@
 
-
-
 <?php
 require_once "config.php";
 session_start();
-// Include your database connection code here
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
@@ -19,7 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $name, $email, $feedback, $emoji);
 
     if ($stmt->execute()) {
-        echo "Feedback submitted successfully!";
+        echo "<script>alert('Feedback submitted successfully!','_self')</script>";
+        echo "<script>window.open('index.php','_self')</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
